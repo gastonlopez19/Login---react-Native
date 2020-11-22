@@ -1,23 +1,53 @@
-import Home from './screen/Home';
-import Post from './screen/Post';
-import Datails from './screen/Datails';
+import Home from './components/Home';
+import Modal from './components/Modal';
+import Login from './components/Login';
+import Register from './components/Register';
+import Loading from './components/Loading';
 
-// Navigation
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-const ScreenApp = createStackNavigator({
+const AppRouteNav = createStackNavigator({
   Home: {
-    screen: Home,
+    screen: Home
   },
-  Post: {
-    screen: Post,
+},
+  {
+    initialRouteName: 'Home'
+  });
+
+const OnBoardingNavegation = createStackNavigator({
+  Login: {
+    screen: Login
   },
-  Datails: {
-    screen: Datails,
+  Register: {
+    screen: Register
   },
 }, {
-  initialRouteName: 'Home'
-});
+  initialRouteName: 'Login',
+  defaultNavigationOptions: ({ navigation }) => ({
+    title: navigation.state.routeName === 'Login' ? 'Iniciar Sesión' : 'Registrate',
+    headerTitleAlign: 'center'
+  })
+})
 
-export default createAppContainer(ScreenApp);
+const RouteMain = createStackNavigator({
+  Main: AppRouteNav,
+  Modal
+}, {
+  mode: "modal",
+  headerMode: 'none'
+})
+
+const BaseStack = createSwitchNavigator({
+  Loading,
+  OnBoarding: OnBoardingNavegation,
+  Root: RouteMain,
+}, {
+  initialRouteName: 'Loading'
+})
+
+const AppNav = createAppContainer(BaseStack);
+
+export default AppNav;
+
