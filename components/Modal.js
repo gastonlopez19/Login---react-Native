@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableNativeFeedback, AsyncStorage } from 'react-native';
+import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API } from '../hooks/Hooks';
 import axios from 'axios';
 

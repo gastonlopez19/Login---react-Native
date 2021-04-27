@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { View, Text, StyleSheet, FlatList, AsyncStorage } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import List from './List';
 
 // hooks

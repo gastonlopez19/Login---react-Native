@@ -7,8 +7,11 @@ import {
     Button,
     TouchableHighlight,
     Alert,
-    AsyncStorage,
+    
 } from 'react-native';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import useForm from '../hooks/Form';
 import axios from 'axios';
 
